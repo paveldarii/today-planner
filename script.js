@@ -11,7 +11,14 @@ var plannerList = [
   "#fivepm",
 ];
 
-var buttonEl = $("saveBtn");
+// set todays date on the screen
+$("#currentDay").text(
+  moment().format("dddd") +
+    ", " +
+    moment().format("MMMM") +
+    " " +
+    moment().format("Do")
+);
 //bellow is the code to make the right color for the planner hours
 for (let i = 0; i < plannerList.length; i++) {
   if (
@@ -33,6 +40,7 @@ for (let i = 0; i < plannerList.length; i++) {
   $(plannerList[i] + " textarea").text(localStorage.getItem(plannerList[i]));
 }
 
+//event listener react on save button
 $(".saveBtn").on("click", function () {
   var textareaEl = $("#" + $(this).parent().parent().attr("id") + " textarea");
   var keyToStore = "#" + $(this).parent().parent().attr("id");
